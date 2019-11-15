@@ -3,6 +3,7 @@ part of native_widgets;
 Future<T> showNativeDialog<T>({
   @required BuildContext context,
   @required NativeDialog<T> child,
+  bool isBarrierDismissable
 }) {
   if (Platform.isIOS) {
     if (child?.ios?.showActionSheet ?? false) {
@@ -19,6 +20,7 @@ Future<T> showNativeDialog<T>({
   }
   return showDialog<T>(
     context: context,
+    barrierDismissible: isBarrierDismissable,
     builder: (BuildContext context) => child,
   );
 }
